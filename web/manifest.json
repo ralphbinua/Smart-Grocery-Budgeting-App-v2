@@ -1,6 +1,6 @@
 {
-    "name": "my_app_name",
-    "short_name": "my_app_name",
+    "name": "smart_budget_app",
+    "short_name": "smart_budget_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

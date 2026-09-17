@@ -1,4 +1,4 @@
-# my_app_name
+# smart_budget_app
 
 A new Flutter project.
 
