@@ -16,16 +16,16 @@ class CartProvider with ChangeNotifier {
       'https://smart-grocery-budgeting-app.onrender.com';
   double _budgetLimit = 0.0;
 
-  //  Grocery Input List (user's raw typed list, pre-analysis) 
+  // ─── Grocery Input List (user's raw typed list, pre-analysis) ───────────────
   final List<GroceryInputItem> _groceryList = [];
 
-  //  Analyzed Cart Items (populated after AI analysis) 
+  // ─── Analyzed Cart Items (populated after AI analysis) ──────────────────────
   List<CartItem> _items = [];
 
   bool _isAnalyzing = false;
   final List<PurchaseHistory> _history = [];
 
-  //  Alert tracking (each fires only once per session) 
+  // ─── Alert tracking (each fires only once per session) ──────────────────────
   bool _alert50Shown = false;
   bool _alert80Shown = false;
   bool _alert100Shown = false;
@@ -34,7 +34,7 @@ class CartProvider with ChangeNotifier {
     _loadPreferences();
   }
 
-  //  Getters 
+  // ─── Getters ─────────────────────────────────────────────────────────────────
   double get budgetLimit => _budgetLimit;
   double get totalSpent => _items.fold(0.0, (sum, i) => sum + i.total);
   double get remaining => _budgetLimit - totalSpent;
@@ -71,7 +71,7 @@ class CartProvider with ChangeNotifier {
     return map;
   }
 
-  //  Persistence 
+  // ─── Persistence ──────────────────────────────────────────────────────────────
   Future<void> _loadPreferences() async {
     final prefs = await SharedPreferences.getInstance();
     _budgetLimit = prefs.getDouble('budget_limit') ?? 0.0;
@@ -89,7 +89,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  //  Grocery Input List Operations 
+  // ─── Grocery Input List Operations ───────────────────────────────────────────
   void addGroceryItem(String name, {int quantity = 1, double? estimatedPrice}) {
     if (name.trim().isEmpty) return;
     // Check for duplicates (case-insensitive)
@@ -134,7 +134,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  //  AI Batch Analysis 
+  // ─── AI Batch Analysis ────────────────────────────────────────────────────────
   Future<void> analyzeList() async {
     if (_groceryList.isEmpty || _isAnalyzing) return;
 
@@ -218,7 +218,7 @@ class CartProvider with ChangeNotifier {
     }
   }
 
-  //  Cart Item Operations 
+  // ─── Cart Item Operations ─────────────────────────────────────────────────────
   void removeItem(String id) {
     _items.removeWhere((i) => i.id == id);
     notifyListeners();
@@ -262,7 +262,7 @@ class CartProvider with ChangeNotifier {
     }
   }
 
-  //  Checkout 
+  // ─── Checkout ──────────────────────────────────────────────────────────────────
   Future<void> clearCart() async {
     if (_items.isEmpty) return;
     final now = DateTime.now();
@@ -341,7 +341,7 @@ class CartProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  //  Budget Alert System 
+  // ─── Budget Alert System ─────────────────────────────────────────────────────
   void _checkBudgetAlerts() {
     if (_budgetLimit <= 0) return;
 
@@ -612,7 +612,7 @@ class CartProvider with ChangeNotifier {
     );
   }
 
-  //  Helpers 
+  // ─── Helpers ──────────────────────────────────────────────────────────────────
   String _monthName(int m) {
     const months = [
       'Jan',

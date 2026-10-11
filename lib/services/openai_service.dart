@@ -87,7 +87,7 @@ Do NOT include any explanation text — only the JSON array.
           'Authorization': 'Bearer $_apiKey',
         },
         body: jsonEncode({
-          'model': 'openai/gpt-oss-20b  ',
+          'model': 'openai/gpt-oss-20b',
           'messages': [
             {
               'role': 'system',
