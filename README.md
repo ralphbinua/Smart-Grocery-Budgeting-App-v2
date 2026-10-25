@@ -1,4 +1,4 @@
-# IoT-Enabled Smart Grocery Budgeting System
+# Smart Grocery Budgeting System
 
 A modern Flutter application designed to optimize grocery shopping costs using AI and IoT. This system tracks your budget in real-time and suggests cheaper alternatives for scanned items using Google Gemini AI.
 
