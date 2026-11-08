@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 
-class CategoryChip extends StatelessWidget {
+class CategoryChip extends StatelessWidget
+ {
+  
   final String label;
 
   const CategoryChip({super.key, required this.label});
 
   Color _color() 
   {
+
     const colors = {
       'Dairy': AppColors.info,
       'Bakery': AppColors.warning,
@@ -27,6 +30,7 @@ class CategoryChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = _color();
     return Container(
+
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
         color: color.withValues(alpha: 0.12),
