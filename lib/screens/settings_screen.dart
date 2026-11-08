@@ -8,6 +8,7 @@ class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
   @override
+
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
@@ -115,10 +116,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   Widget _buildBudgetSection(BuildContext context, CartProvider cart) {
     return _sectionCard(
+
       title: 'Budget Settings',
       icon: Icons.account_balance_wallet_rounded,
       iconColor: AppColors.primary,
-      children: [
+      children:
+       [
         _settingRow(
           label: 'Shopping Budget',
           subtitle: 'Current trip limit',
@@ -146,6 +149,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
         ),
+
         const Divider(color: Color(0xFF1E293B), height: 1),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -163,7 +167,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Text(
+
+                  Text
+                  (
                     '₱${_monthlyBudget.toStringAsFixed(0)}',
                     style: const TextStyle(
                       fontSize: 14,
@@ -203,7 +209,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Widget _buildPreferencesSection(CartProvider cart) {
+  Widget _buildPreferencesSection(CartProvider cart) 
+  {
     return _sectionCard(
       title: 'Preferences',
       icon: Icons.tune_rounded,
@@ -215,6 +222,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           value: cart.notificationsEnabled,
           onChanged: cart.setNotificationsEnabled,
         ),
+
         const Divider(color: Color(0xFF1E293B), height: 1),
         _toggleRow(
           label: 'AI Suggestions',
@@ -225,6 +233,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ],
     );
   }
+
 
   Widget _buildAISection() {
     return _sectionCard(
@@ -258,6 +267,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
           ),
         ),
+        
         const Divider(color: Color(0xFF1E293B), height: 1),
         _settingRow(
           label: 'Budget Alerts',
@@ -281,6 +291,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ],
     );
   }
+
 
   Widget _buildAboutSection() {
     return _sectionCard(
