@@ -6,7 +6,8 @@ class CategoryChip extends StatelessWidget {
 
   const CategoryChip({super.key, required this.label});
 
-  Color _color() {
+  Color _color() 
+  {
     const colors = {
       'Dairy': AppColors.info,
       'Bakery': AppColors.warning,
@@ -16,10 +17,13 @@ class CategoryChip extends StatelessWidget {
       'Canned Goods': Color(0xFF10B981),
       'Instant Food': Color(0xFFF97316),
     };
+
     return colors[label] ?? AppColors.textMuted;
   }
 
   @override
+
+
   Widget build(BuildContext context) {
     final color = _color();
     return Container(
@@ -29,7 +33,9 @@ class CategoryChip extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: color.withValues(alpha: 0.25)),
       ),
-      child: Text(
+      
+      child: Text
+      (
         label,
         style: TextStyle(
           fontSize: 11,
