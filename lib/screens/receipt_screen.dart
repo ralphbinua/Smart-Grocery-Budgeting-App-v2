@@ -441,10 +441,14 @@ class ReceiptScreen extends StatelessWidget {
           );
         },
         icon: const Icon(Icons.print_rounded, size: 18),
+        
         label: const Text('Generate Digital Receipt'),
+
         style: ElevatedButton.styleFrom(
+
           padding: const EdgeInsets.symmetric(vertical: 16),
           shape: RoundedRectangleBorder(
+
             borderRadius: BorderRadius.circular(14),
           ),
         ),
