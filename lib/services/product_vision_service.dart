@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 
-class ProductIdentification {
+class ProductIdentification
+ {
   final String name;
   final String? brand;
   final String? quantity;
-
   const ProductIdentification({required this.name, this.brand, this.quantity});
 }
 
@@ -17,11 +17,13 @@ class ProductVisionService {
 
   static const String _apiUrl =
       'https://api.groq.com/openai/v1/chat/completions';
+
   static const int _maxImageBytes = 12 * 1024 * 1024;
 
   static Future<ProductIdentification?> identifyProduct({
     required Uint8List imageBytes,
     required String barcode,
+
   }) async {
     if (_apiKey.isEmpty || _apiKey.contains('your_')) {
       debugPrint('ProductVisionService: API key is missing or invalid.');
@@ -70,29 +72,33 @@ class ProductVisionService {
         }),
       );
 
-      if (response.statusCode != 200) {
+      if (response.statusCode != 200)
+       {
         debugPrint(
           'ProductVisionService error: ${response.statusCode} ${response.body}',
         );
         return null;
-      }
+       }
 
       final responseData = jsonDecode(response.body) as Map<String, dynamic>;
       final choices = responseData['choices'] as List?;
       if (choices == null || choices.isEmpty) return null;
 
+
       final content = choices.first['message']?['content']?.toString();
       if (content == null || content.isEmpty) return null;
+
       final identity = jsonDecode(content) as Map<String, dynamic>;
       if (identity['readable'] != true) return null;
 
       final name = identity['name']?.toString().trim() ?? '';
       if (name.isEmpty) return null;
 
-      String? optionalText(String key) {
+      String? optionalText(String key)
+       {
         final value = identity[key]?.toString().trim();
         return value == null || value.isEmpty ? null : value;
-      }
+       }
 
       return ProductIdentification(
         name: name,
