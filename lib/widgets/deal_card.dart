@@ -9,6 +9,7 @@ class DealCard extends StatelessWidget {
   const DealCard({super.key, required this.dealText, required this.itemName});
 
   @override
+
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -22,6 +23,8 @@ class DealCard extends StatelessWidget {
           end: Alignment.centerRight,
         ),
         borderRadius: BorderRadius.circular(12),
+
+
         border: Border.all(color: AppColors.warning.withValues(alpha: 0.25)),
       ),
       child: Row(
@@ -37,6 +40,7 @@ class DealCard extends StatelessWidget {
               color: AppColors.warning,
               size: 16,
             ),
+
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -50,10 +54,12 @@ class DealCard extends StatelessWidget {
             ),
           ),
           Container(
+
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
               color: AppColors.warning.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(8),
+
             ),
             child: const Text(
               'DEAL',
